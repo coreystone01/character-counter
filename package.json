@@ -1,0 +1,25 @@
+git{
+  "name": "character-counter",
+  "version": "1.0.0",
+  "description": "Frontend Mentor Challenge - Character Counter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreystone01/character-counter.git"
+  },
+  "author": "Corey Stone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coreystone01/character-counter/issues"
+  },
+  "homepage": "https://github.com/coreystone01/character-counter#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "sass": "^1.89.2"
+  }
+}
