@@ -10,14 +10,18 @@
   <title>Frontend Mentor | Character counter</title>
 </head>
 <body class="bg-Neutral900 text-white">
-  <div class="container">
+  <!-- Wrapper for all container (Bootstrap's container class puts everything inside of it in Flex) -->
+  <div class="container"> 
     <nav class="navbar navbar-default">
+      <!-- Flex, put everything at 100% width (container-fluid) -->
       <div class="container-fluid">
+        <!-- navabar-header also needs to be in flex, I couldn't tell you why honestly since flex grow should take care of the issues below -->
         <div class="navbar-header d-flex flex-grow-1 justify-content-between align-items-center">
           <a href="#" class="navbar-brand">
             <img class="navbar__img" src="/assets/images/logo-dark-theme.svg" alt="Brand">
           </a>
           <div class="theme-switcher text-end flex-grow-1">
+            <!-- put our svg into a button -->
              <button class="btn">
                 <img class="navbar__theme-swticher" src="/assets/images/icon-sun.svg" alt="Switch to Light Theme">
               </button>
@@ -32,6 +36,7 @@
       </div>
     <textarea class="form-control text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" placeholder="Start typing here… (or paste your text)">
     </textarea>
+    <!-- use Bootstrap's input group container which helps control the style of the checkboxes and puts them in Flex automatically -->
     <div class="input-group flex-column gap-3 my-3 px-1 display-5 fw-light">
       <label for="">
         <input class="form-check-input bg-transparent" type="checkbox" value="">
@@ -42,6 +47,7 @@
         Set Character Limit
       </label>
     </div>
+    <!-- We're using custom display size units based on our design system -->
     <p class="hero-content display-5 fw-light">Approx. reading time: <!-- Insert number --> minutes</p>
     </section>
     <section class="scores">
@@ -69,12 +75,12 @@
         </div>
       </div>
     </section>
-      <section class="letter-density mt-4">
-    <div class="container p-0">
-      <h5 class="card-title display-4 fw-bold">Letter Density</h5>
-      <p class="letter-density__content display-6 fw-light">No characters found. Start typing to see letter density.</p>
-    </div>
-  </section>
+    <section class="letter-density mt-4">
+      <div class="container p-0">
+        <h5 class="card-title display-4 fw-bold">Letter Density</h5>
+        <p class="letter-density__content display-6 fw-light">No characters found. Start typing to see letter density.</p>
+      </div>
+    </section>
   </div>
 </body>
 </html>
