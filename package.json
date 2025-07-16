@@ -1,9 +1,10 @@
-git{
+{
   "name": "character-counter",
   "version": "1.0.0",
   "description": "Frontend Mentor Challenge - Character Counter",
-  "main": "index.js",
   "scripts": {
+    "dev": "parcel index.html",
+    "start": "parcel build index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +18,9 @@ git{
   },
   "homepage": "https://github.com/coreystone01/character-counter#readme",
   "devDependencies": {
-    "parcel": "^2.15.4"
-  },
-  "dependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "bootstrap": "^5.3.7",
+    "parcel": "^2.15.4",
     "sass": "^1.89.2"
   }
 }

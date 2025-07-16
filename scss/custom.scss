@@ -1,0 +1,31 @@
+@use "./base/typography";
+@use "./modules/card";
+@use "./modules/images";
+// @import "/node_modules/bootstrap/scss/functions";
+// @import "/node_modules/bootstrap/scss/variables";
+// @import "/node_modules/bootstrap/scss/mixins";
+// @import "/node_modules/bootstrap/scss/grid";
+
+$theme-colors: (
+  "Neutral100": #f2f2f7,
+  "Neutral900": #12131a,
+  "Neutral800": #21222c,
+  "Neutral200": #e4e4ef,
+  "Neutral600": #404153,
+  "Yellow": #ff9f00,
+  "Purple": #c27cf8,
+  "Orange": #fe8159,
+  "Red": #da3701
+);
+
+// Custom text sizes based on our design language
+$display-font-sizes: (
+  1: 4rem,
+  2: 2.5rem,
+  3: 1.5rem,
+  4: 1.25rem,
+  5: 1rem,
+  6: 0.75rem
+) !default;
+
+@import "../node_modules/bootstrap/scss/bootstrap";

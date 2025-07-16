@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+// This was the only way I could get bootstrap to actually apply this font style
+:root {
+  --bs-body-font-family: 'DM Sans', sans-serif !important;
+  --bs-body-line-height: 140% !important;
+}
+

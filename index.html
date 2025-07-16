@@ -3,33 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link href="/css/custom.css" rel="stylesheet">
+  <!-- <script src = "./script.js" type="module"></script>  -->
   
   <title>Frontend Mentor | Character counter</title>
 </head>
-<body>
-
-  Analyze your text in real-time.
-
-  Start typing here… (or paste your text)
-
-  Exclude Spaces
-  Set Character Limit
-
-  Approx. reading time: <!-- Insert number --> minutes
-
-  <!-- Insert number -->
-  Total Characters
-
-  <!-- Insert number -->
-  Word Count
-
-  <!-- Insert number -->
-  Sentence Count
-
-  Letter Density
-  No characters found. Start typing to see letter density.
-
+<body class="bg-Neutral900 text-white">
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header d-flex flex-grow-1 justify-content-between align-items-center">
+          <a href="#" class="navbar-brand">
+            <img class="navbar__img" src="/assets/images/logo-dark-theme.svg" alt="Brand">
+          </a>
+          <div class="theme-switcher text-end flex-grow-1">
+            <img class="navbar__theme-swticher" src="/assets/images/icon-sun.svg" alt="Switch to Light Theme">
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- End navbar -->
+    <section class="hero">
+      <div class="page-header">
+        <h1 class="page-header__heading display-1 fw-bold text-center mx-auto p-3">Analyze your text in real-time.</h1>
+      </div>
+    <textarea class="form-control text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" placeholder="Start typing here… (or paste your text)">
+    </textarea>
+    <div class="input-group flex-column gap-3 my-3 px-1 display-5 fw-light">
+      <label for="">
+        <input class="form-check-input bg-transparent" type="checkbox" value="">
+        Exclude Spaces
+      </label>
+      <label for="">
+        <input class="form-check-input bg-transparent" type="checkbox" value="">
+        Set Character Limit
+      </label>
+    </div>
+    <p class="hero-content display-5 fw-light">Approx. reading time: <!-- Insert number --> minutes</p>
+    </section>
+    <section class="scores">
+      <div class="container d-flex flex-wrap flex-column p-0 gap-3">
+        <div class="card scores__char-count d-flex flex-row justify-content-between align-items-center overflow-hidden rounded-4 bg-Purple">
+          <div class="card-content-wrapper ms-3">
+            <h5 class="card-title display-1 fw-bold">100</h5>
+            <p class="card-text display-5 fw-normal">Total Characters</p>
+          </div>
+          <img class="patterns" src="/assets/images/pattern-character-count.svg" alt="">
+        </div>
+        <div class="card scores__word-count d-flex flex-row justify-content-between align-items-center overflow-hidden bg-Yellow rounded-4">
+          <div class="card-content-wrapper ms-3">
+            <h5 class="card-title display-1 fw-bold">100</h5>
+            <p class="card-text display-5 fw-normal">Word Count</p>
+          </div>
+          <img class="patterns" src="/assets/images/pattern-word-count.svg" alt="">
+        </div>
+        <div class="card scores__sent-count d-flex flex-row justify-content-between align-items-center overflow-hidden bg-Orange rounded-4">
+          <div class="card-content-wrapper ms-3">
+            <h5 class="card-title display-1 fw-bold">100</h5>
+            <p class="card-text display-5 fw-normal">Sentence Count</p>
+          </div>
+          <img class="patterns" src="/assets/images/pattern-sentence-count.svg" alt="">
+        </div>
+      </div>
+    </section>
+      <section class="letter-density mt-4">
+    <div class="container p-0">
+      <h5 class="card-title display-4 fw-bold">Letter Density</h5>
+      <p class="letter-density__content display-6 fw-light">No characters found. Start typing to see letter density.</p>
+    </div>
+  </section>
+  </div>
 </body>
 </html>
