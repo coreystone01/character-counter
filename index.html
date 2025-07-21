@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link href="/css/custom.css" rel="stylesheet">
-  <!-- <script src = "./script.js" type="module"></script>  -->
   
   <title>Frontend Mentor | Character counter</title>
 </head>
@@ -34,7 +33,7 @@
       <div class="page-header">
         <h1 class="page-header__heading display-1 fw-bold text-center mx-auto p-3">Analyze your text in real-time.</h1>
       </div>
-    <textarea class="form-control text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" placeholder="Start typing here… (or paste your text)">
+    <textarea class="form-control text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" id="userInput">
     </textarea>
     <!-- use Bootstrap's input group container which helps control the style of the checkboxes and puts them in Flex automatically -->
     <div class="input-group flex-column gap-3 my-3 px-1 display-5 fw-light">
@@ -54,21 +53,21 @@
       <div class="container d-flex flex-wrap flex-column p-0 gap-3">
         <div class="card scores__char-count d-flex flex-row justify-content-between align-items-center overflow-hidden rounded-4 bg-Purple">
           <div class="card-content-wrapper ms-3">
-            <h5 class="card-title display-1 fw-bold">100</h5>
+            <h5 class="card-title display-1 fw-bold"></h5>
             <p class="card-text display-5 fw-normal">Total Characters</p>
           </div>
           <img class="patterns" src="/assets/images/pattern-character-count.svg" alt="">
         </div>
         <div class="card scores__word-count d-flex flex-row justify-content-between align-items-center overflow-hidden bg-Yellow rounded-4">
           <div class="card-content-wrapper ms-3">
-            <h5 class="card-title display-1 fw-bold">100</h5>
+            <h5 class="card-title display-1 fw-bold"></h5>
             <p class="card-text display-5 fw-normal">Word Count</p>
           </div>
           <img class="patterns" src="/assets/images/pattern-word-count.svg" alt="">
         </div>
         <div class="card scores__sent-count d-flex flex-row justify-content-between align-items-center overflow-hidden bg-Orange rounded-4">
           <div class="card-content-wrapper ms-3">
-            <h5 class="card-title display-1 fw-bold">100</h5>
+            <h5 class="card-title display-1 fw-bold"></h5>
             <p class="card-text display-5 fw-normal">Sentence Count</p>
           </div>
           <img class="patterns" src="/assets/images/pattern-sentence-count.svg" alt="">
@@ -78,9 +77,13 @@
     <section class="letter-density mt-4">
       <div class="container p-0">
         <h5 class="card-title display-4 fw-bold">Letter Density</h5>
-        <p class="letter-density__content display-6 fw-light">No characters found. Start typing to see letter density.</p>
+          <div id="progress-bar-container">
+
+          </div>
+        <p class="letter-density__content display-6 fw-light"></p>
       </div>
     </section>
   </div>
+  <script src ="./script.js"></script> 
 </body>
 </html>
