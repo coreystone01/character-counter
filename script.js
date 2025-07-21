@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateStats() {
         const text = textAreaInput.value.toLowerCase();
-        const totalCharacters = text.length;
-        const characterCountExcludingSpaces = text.replace(/\s/g, '').length;
+        const excludeSpaces = document.getElementById('excludeSpaces').checked;
+        // const totalCharacters = text.length;
+        const totalCharacters = excludeSpaces ? text.replace(/\s/g, '').length : text.length;
         const totalWords = text.trim().split(/\s+/).length;
         // recommended by multiple sources on the Internet, though I can't speak to filter
         const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
@@ -29,12 +30,17 @@ document.addEventListener("DOMContentLoaded", function () {
         //         letterCounts[char] = (letterCounts[char] || 0 + 1);
         // }
 
-        const letterCounts = (text) => {
+        const letterCounts = (text, excludeSpaces) => {
             const map = new Map();
-            for (const char of text){
-                map.set(char, (map.get(char) || 0) + 1);
+                for (const char of text) {
+                    // suggested by AI
+                if (excludeSpaces && char === ' ') continue;
+                if (/[a-z]/.test(char)) {
+                    map.set(char, (map.get(char) || 0) + 1);
+                }
             }
             return map;
+
         };
 
         const letterCountsMap = letterCounts(text);
@@ -59,20 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if(totalLetters === 0) {
             densityMessage.textContent = "No Characters found. Start typing to see letter density";
         }
-            else {
-                // say nothing
-                densityMessage.textContent = "";
+        else {
             
             for (const [char, count] of letterCountsMap.entries()) {
                 const percentage = (count / totalLetters) * 100;
 
                     const progBar = document.createElement('div');
-                    progBar.className = 'mb-2';
+                    progBar.className = 'mb-2 d-flex align-items-center';
                     progBar.innerHTML = `
-                    <span class="fw-bold">${char.toUpperCase()}: ${count}</span>
-                        <div class="progress">
-                            <div class="progress-bar bg-Purple" role="progressBar" style="width: ${percentage.toFixed(2)}%;" aria-valuenow="${count}" aria-valuemin="0" aria-valuemax="${totalCharacters}">
-                            ${count}
+                    <span class="pe-2">${char.toUpperCase()}</span>
+                        <div class="progress bg-Neutral800 flex-grow-1 role="progressbar"">
+                            <div class="progress-bar bg-Purple rounded" style="width: ${percentage.toFixed(2)}%;" aria-valuenow="${count}" aria-valuemin="0" aria-valuemax="${totalCharacters}">
                             </div>
                         </div> 
                     `;
