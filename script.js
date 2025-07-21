@@ -16,19 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateStats() {
         const text = textAreaInput.value.toLowerCase();
         const excludeSpaces = document.getElementById('excludeSpaces').checked;
-        // const totalCharacters = text.length;
         const totalCharacters = excludeSpaces ? text.replace(/\s/g, '').length : text.length;
         const totalWords = text.trim().split(/\s+/).length;
         // recommended by multiple sources on the Internet, though I can't speak to filter
         const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
         const totalSentences = sentences.length;
 
-        // const letterCounts = {};
-        // for (const char of text){
-        //     if(/[a-z]/.test(char)) {
-        // // Here we're saying if the character is between a-z, add it to the letterCounts object and increase its count by 1 OR set it to a default of 0 since 0 does matter here
-        //         letterCounts[char] = (letterCounts[char] || 0 + 1);
-        // }
 
         const letterCounts = (text, excludeSpaces) => {
             const map = new Map();
@@ -59,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             totalLetters += count;
         }
 
-        // progressBarContainer.innerHTML = ''; // Clear existing bars
+        progressBarContainer.innerHTML = ''; // Clear existing bars
 
         // Check if we even have any input
         if(totalLetters === 0) {
@@ -77,7 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="progress bg-Neutral800 flex-grow-1 role="progressbar"">
                             <div class="progress-bar bg-Purple rounded" style="width: ${percentage.toFixed(2)}%;" aria-valuenow="${count}" aria-valuemin="0" aria-valuemax="${totalCharacters}">
                             </div>
-                        </div> 
+                        </div>
+                    <span class="ps-2">${percentage.toFixed(2)}%</span>
                     `;
 
                     progressBarContainer.appendChild(progBar);
