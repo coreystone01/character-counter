@@ -1,84 +1,68 @@
-// check if dom is loaded then run function
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Get Values/Input from DOM
-    const textAreaInput = document.getElementById('userInput');
-    const progressBarContainer = document.getElementById('progress-bar-container');
-
-    // Set values
-    //Card values
-    const charCountCard = document.querySelector('.scores__char-count h5');
-    const wordCountCard = document.querySelector('.scores__word-count h5');
-    const sentenceCountCard = document.querySelector('.scores__sent-count h5');
-    const densityMessage = document.querySelector('.letter-density__content');
+$(document).ready(function(){
 
 
-    function updateStats() {
-        const text = textAreaInput.value.toLowerCase();
-        const excludeSpaces = document.getElementById('excludeSpaces').checked;
+    function updateStats(){
+        const text = $("#userInput").val().toLowerCase();
+        const excludeSpaces = $("#excludeSpaces").is(':checked');
+
         const totalCharacters = excludeSpaces ? text.replace(/\s/g, '').length : text.length;
-        const totalWords = text.trim().split(/\s+/).length;
-        // recommended by multiple sources on the Internet, though I can't speak to filter
-        const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+        const totalWords = text.trim().split(/\s+/).filter(Boolean).length;
+        const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         const totalSentences = sentences.length;
 
+        $(".scores__char-count h5").text(totalCharacters);
+        $(".scores__word-count h5").text(totalWords);
+        $(".scores__sent-count h5").text(totalSentences);
 
         const letterCounts = (text, excludeSpaces) => {
-            const map = new Map();
-                for (const char of text) {
-                    // suggested by AI
+        const map = new Map();
+            for (const char of text) {
+                // suggested by AI
                 if (excludeSpaces && char === ' ') continue;
                 if (/[a-z]/.test(char)) {
                     map.set(char, (map.get(char) || 0) + 1);
                 }
             }
             return map;
-
         };
 
-        const letterCountsMap = letterCounts(text);
+        const letterCountsMap = letterCounts(text, excludeSpaces);
 
-        // .textContent ensures that ALL values are sent to the DOM and allows us to update the DOM dynamically or with better performance
-        charCountCard.textContent = totalCharacters;
-        wordCountCard.textContent = totalWords;
-        sentenceCountCard.textContent = totalSentences;
-
-            // Clear progress bars
-        progressBarContainer.innerHTML = '';
-
-
+        // make sure out output doesn't include 0 and start iterating 
         let totalLetters = 0;
         for(let count of letterCountsMap.values())   {
             totalLetters += count;
         }
 
-        progressBarContainer.innerHTML = ''; // Clear existing bars
+        const progressBarContainer = $("#progress-bar-container");
+        // very important line so that the progress bars are constantly repeated
+        // suggested by AI
+        progressBarContainer.empty();
 
-        // Check if we even have any input
-        if(totalLetters === 0) {
-            densityMessage.textContent = "No Characters found. Start typing to see letter density";
+
+        if(totalLetters === 0){
+            $(".letter-density__content").text = "No Characters found. Start typing to see letter density";
         }
         else {
-            
+             $(".letter-density__content").text('');
             for (const [char, count] of letterCountsMap.entries()) {
-                const percentage = (count / totalLetters) * 100;
+            const percentage = (count / totalLetters) * 100;
 
-                    const progBar = document.createElement('div');
-                    progBar.className = 'mb-2 d-flex align-items-center';
-                    progBar.innerHTML = `
-                    <span class="pe-2">${char.toUpperCase()}</span>
-                        <div class="progress bg-Neutral800 flex-grow-1 role="progressbar"">
-                            <div class="progress-bar bg-Purple rounded" style="width: ${percentage.toFixed(2)}%;" aria-valuenow="${count}" aria-valuemin="0" aria-valuemax="${totalCharacters}">
-                            </div>
-                        </div>
+            const progBar = $("<div></div>").addClass("mb-2 d-flex align-items-center");
+            progBar.append(`
+                <span class="pe-2">${char.toUpperCase()}</span>
+                <div class="progress bg-Neutral800 flex-grow-1 role="progressbar">
+                        <div class="progress-bar bg-Purple rounded" style="width: ${percentage.toFixed(2)}%;" aria-valuenow="${count}" aria-valuemin="0" aria-valuemax="${totalCharacters}"></div>
+                    </div>
+
                     <span class="ps-2">${percentage.toFixed(2)}%</span>
-                    `;
-
-                    progressBarContainer.appendChild(progBar);
+                `);
+                progressBarContainer.append(progBar);
             }
         }
-    }
 
-// Event listener
-    textAreaInput.addEventListener('input', updateStats);
+    }
+    // call updates stats "on" change of the textarea (userinput)
+    $("#userInput, #excludeSpaces").on("input change", updateStats);
+// end document ready()
 });

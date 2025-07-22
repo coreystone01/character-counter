@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
   <link href="/css/custom.css" rel="stylesheet">
   
   <title>Frontend Mentor | Character counter</title>
@@ -33,7 +35,7 @@
       <div class="page-header">
         <h1 class="page-header__heading display-1 fw-bold text-center mx-auto p-3">Analyze your text in real-time.</h1>
       </div>
-    <textarea class="form-control text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" id="userInput">
+    <textarea class="form-control letter-density__content text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" id="userInput">
     </textarea>
     <!-- use Bootstrap's input group container which helps control the style of the checkboxes and puts them in Flex automatically -->
     <div class="input-group flex-column gap-3 my-3 px-1 display-5 fw-light">
@@ -75,8 +77,9 @@
       </div>
     </section>
     <section class="letter-density mt-4">
-      <div class="container p-0">
+      <div class="container">
         <h5 class="card-title display-4 fw-bold">Letter Density</h5>
+        <div class="letter-density__content display-6 mt-1 pb-3">No Characters found. Start typing to see letter density</div>
           <div id="progress-bar-container">
 
           </div>
