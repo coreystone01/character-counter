@@ -10,21 +10,22 @@
   
   <title>Frontend Mentor | Character counter</title>
 </head>
-<body class="bg-Neutral900 text-white">
+<!-- <body class="bg-Neutral900 text-white"> -->
+  <body data-bs-theme="dark">
   <!-- Wrapper for all container (Bootstrap's container class puts everything inside of it in Flex) -->
   <div class="container"> 
     <nav class="navbar navbar-default">
       <!-- Flex, put everything at 100% width (container-fluid) -->
       <div class="container-fluid">
-        <!-- navabar-header also needs to be in flex, I couldn't tell you why honestly since flex grow should take care of the issues below -->
+        <!-- navbar-header also needs to be in flex, I couldn't tell you why honestly since flex grow should take care of the issues below -->
         <div class="navbar-header d-flex flex-grow-1 justify-content-between align-items-center">
           <a href="#" class="navbar-brand">
             <img class="navbar__img" src="/assets/images/logo-dark-theme.svg" alt="Brand">
           </a>
           <div class="theme-switcher text-end flex-grow-1">
             <!-- put our svg into a button -->
-             <button class="btn">
-                <img class="navbar__theme-swticher" src="/assets/images/icon-sun.svg" alt="Switch to Light Theme">
+             <button class="btn theme-toggle-btn">
+                <img id="navbar__theme-swticher" src="/assets/images/icon-sun.svg" alt="Switch to Light Theme">
               </button>
           </div>
         </div>
@@ -35,42 +36,42 @@
       <div class="page-header">
         <h1 class="page-header__heading display-1 fw-bold text-center mx-auto p-3">Analyze your text in real-time.</h1>
       </div>
-    <textarea class="form-control letter-density__content text-white fw-light p-4 rounded-4 bg-Neutral800 border-Neutral600 border-2" rows="10" id="userInput">
+    <textarea class="form-control letter-density__content fw-normal p-4 rounded-4 border-1" rows="10" id="userInput">
     </textarea>
     <!-- use Bootstrap's input group container which helps control the style of the checkboxes and puts them in Flex automatically -->
-    <div class="input-group flex-column gap-3 my-3 px-1 display-5 fw-light">
+    <div class="input-group flex-column gap-3 my-3 px-1 display-5 fw-normal">
       <label for="">
-        <input class="form-check-input bg-transparent" type="checkbox" value="" id="excludeSpaces">
+        <input class="form-check-input bg-transparent border-1" type="checkbox" value="" id="excludeSpaces">
         Exclude Spaces
       </label>
       <label for="">
-        <input class="form-check-input bg-transparent" type="checkbox" value="" id="charLimit">
+        <input class="form-check-input bg-transparent border-1" type="checkbox" value="" id="charLimit">
         Set Character Limit
       </label>
     </div>
     <!-- We're using custom display size units based on our design system -->
-    <p class="hero-content display-5 fw-light">Approx. reading time: <!-- Insert number --> minutes</p>
+    <p class="hero-content display-5 fw-light">Approx. reading time: <!-- Insert number --> </p>
     </section>
     <section class="scores">
       <div class="container d-flex flex-wrap flex-column p-0 gap-3">
-        <div class="card scores__char-count d-flex flex-row justify-content-between align-items-center overflow-hidden rounded-4 bg-Purple">
+        <div class="card d-flex flex-row justify-content-between align-items-center overflow-hidden rounded-4" id="scores__char-count">
           <div class="card-content-wrapper ms-3">
-            <h5 class="card-title display-1 fw-bold"></h5>
-            <p class="card-text display-5 fw-normal">Total Characters</p>
+            <h5 class="card-title display-1 fw-bold">0</h5>
+            <p class="card-text display-5 fw-semibold">Total Characters</p>
           </div>
           <img class="patterns" src="/assets/images/pattern-character-count.svg" alt="">
         </div>
-        <div class="card scores__word-count d-flex flex-row justify-content-between align-items-center overflow-hidden bg-Yellow rounded-4">
+        <div class="card d-flex flex-row justify-content-between align-items-center overflow-hidden rounded-4" id="scores__word-count">
           <div class="card-content-wrapper ms-3">
-            <h5 class="card-title display-1 fw-bold"></h5>
-            <p class="card-text display-5 fw-normal">Word Count</p>
+            <h5 class="card-title display-1 fw-bold">0</h5>
+            <p class="card-text display-5 fw-semibold">Word Count</p>
           </div>
           <img class="patterns" src="/assets/images/pattern-word-count.svg" alt="">
         </div>
-        <div class="card scores__sent-count d-flex flex-row justify-content-between align-items-center overflow-hidden bg-Orange rounded-4">
+        <div class="card d-flex flex-row justify-content-between align-items-center overflow-hidden rounded-4" id="scores__sent-count">
           <div class="card-content-wrapper ms-3">
-            <h5 class="card-title display-1 fw-bold"></h5>
-            <p class="card-text display-5 fw-normal">Sentence Count</p>
+            <h5 class="card-title display-1 fw-bold">0</h5>
+            <p class="card-text display-5 fw-semibold">Sentence Count</p>
           </div>
           <img class="patterns" src="/assets/images/pattern-sentence-count.svg" alt="">
         </div>
@@ -79,7 +80,7 @@
     <section class="letter-density mt-4">
       <div class="container">
         <h5 class="card-title display-4 fw-bold">Letter Density</h5>
-        <div class="letter-density__content display-6 mt-1 pb-3">No Characters found. Start typing to see letter density</div>
+        <div class="letter-density__content display-6 fw-normal mt-1 pb-3">No Characters found. Start typing to see letter density</div>
           <div id="progress-bar-container">
 
           </div>

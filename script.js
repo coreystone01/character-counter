@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+    $('.theme-toggle-btn').on('click', function() {
+        const currentTheme = $('body').attr('data-bs-theme');
+
+              // Check the current theme
+      if (currentTheme === 'dark') {
+        $('body').attr('data-bs-theme', 'light');
+      } else {
+        $('body').attr('data-bs-theme', 'dark');
+      }
+    //   I cannot seem to get the icons to switch no matter what I try. Even the brand/logos switch out. For now, I'm just going to leave it
+        const whichTheme = $('body').attr('data-bs-theme');
+      if (whichTheme === 'dark') {
+        $('#navbar__theme-switcher img').attr('src', '/assets/images/icon-sun.svg');
+        $('.navbar__img').attr('src', '/assets/images/logo-dark-theme.svg');
+        $('#navbar__theme-switcher img').attr('alt', 'Switch to Light Theme');
+      } else {
+        $('#navbar__theme-switcher img').attr('src', '/assets/images/icon-moon.svg');
+        $('.navbar__img').attr('src', '/assets/images/logo-light-theme.svg');
+        $('#navbar__theme-switcher img').attr('alt', 'Switch to Dark Theme');
+      }
+
+    });
+
+
 
     function updateStats(){
         const text = $("#userInput").val().toLowerCase();
@@ -10,9 +34,9 @@ $(document).ready(function(){
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         const totalSentences = sentences.length;
 
-        $(".scores__char-count h5").text(totalCharacters);
-        $(".scores__word-count h5").text(totalWords);
-        $(".scores__sent-count h5").text(totalSentences);
+        $("#scores__char-count h5").text(totalCharacters);
+        $("#scores__word-count h5").text(totalWords);
+        $("#scores__sent-count h5").text(totalSentences);
 
         const letterCounts = (text, excludeSpaces) => {
         const map = new Map();
@@ -51,7 +75,7 @@ $(document).ready(function(){
             const progBar = $("<div></div>").addClass("mb-2 d-flex align-items-center");
             progBar.append(`
                 <span class="pe-2">${char.toUpperCase()}</span>
-                <div class="progress bg-Neutral800 flex-grow-1 role="progressbar">
+                <div class="progress flex-grow-1 role="progressbar">
                         <div class="progress-bar bg-Purple rounded" style="width: ${percentage.toFixed(2)}%;" aria-valuenow="${count}" aria-valuemin="0" aria-valuemax="${totalCharacters}"></div>
                     </div>
 

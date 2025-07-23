@@ -4,20 +4,6 @@
 @use "./modules/images";
 // @import "../node_modules/bootstrap/scss/bootstrap";
 
-$theme-colors: (
-  "Neutral100": #f2f2f7,
-  "Neutral900": #12131a,
-  "Neutral800": #21222c,
-  "Neutral200": #e4e4ef,
-  "Neutral600": #404153,
-  "Yellow": #ff9f00,
-  "Purple": #c27cf8,
-  "Orange": #fe8159,
-  "Red": #da3701
-);
-
-
-
 // Custom text sizes based on our design language
 $display-font-sizes: (
   1: 4rem,
@@ -29,8 +15,91 @@ $display-font-sizes: (
 ) !default;
 
 
+// theme colors
+  $Neutral900: #12131a;
+  $Neutral800: #21222c;
+  $Neutral600: #404153;
+  $Neutral200: #e4e4ef;
+  $Neutral100: #F2F2F7;
+  $Yellow: #ff9f00;
+  $Purple: #c27cf8;
+  $Orange: #fe8159;
+  $Red: #da3701;
+
+  #navbar__theme-swticher{
+    background-color: $Neutral600;
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+
+// dark theme
+body[data-bs-theme="dark"] {
+  // Styles applied when the body is in dark mode
+  background-color: $Neutral900 !important;
+  color: $Neutral200 !important;
+
+  #navbar__theme-swticher{
+    background-color: $Neutral800;
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+
+  .progress {
+    background-color: $Neutral800 !important;
+  }
+
+  .progress-bar {
+    background-color: $Purple !important;
+  }
+}
+// end dark mode
+
+// light theme
+body[data-bs-theme="light"] {
+  background-color: white !important;
+  color: $Neutral900 !important;
+
+  #navbar__theme-swticher{
+    background-color: $Neutral200;
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+
+  #userInput {
+    background: $Neutral100 !important;
+    color: $Neutral900 !important;
+  }
+
+  .form-check-input {
+    border-color: $Neutral600;
+  }
+
+  .progress {
+    background-color: $Neutral200 !important;
+  }
+}
+// end light theme
+
+
+// custom css for our score cards
+#scores__char-count {
+  background: $Purple;
+  color: $Neutral900;
+}
+
+#scores__word-count {
+  background: $Yellow;
+  color: $Neutral900;
+}
+
+#scores__sent-count {
+  background: $Orange;
+  color: $Neutral900;
+}
+
+// we need this background image for our checkmark to actually be black
 .form-check-input:checked {
-  background-color: map.get($theme-colors, "Purple") !important;
+  background-color: $Purple !important;
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%2312131a' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
 }
 
